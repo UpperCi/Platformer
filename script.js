@@ -33,6 +33,9 @@ let blocks = [];
 let playerRight = playerX + playerW;
 let playerBottom = playerY + playerH;
 
+let delta = 1;
+let deltaTimestamp = 0;
+
 class Block {
     constructor(x, y, w, h, col = 1) {
         this.x = x;
@@ -120,8 +123,8 @@ function movePlayer() {
     if (speedX > maxSpeed) speedX = maxSpeed;
     else if (speedX < -maxSpeed) speedX = -maxSpeed;
 
-    playerX += speedX;
-    playerY += speedY;
+    playerX += speedX * delta;
+    playerY += speedY * delta;
     playerRight = playerX + playerW;
     playerBottom = playerY + playerH;
 }
@@ -137,7 +140,10 @@ function rotatePlayer() {
     player.style.transform = `rotate(${playerAngle}deg)`;
 }
 
-function update() {
+function update(ms) {
+    delta = (ms - deltaTimestamp) / 1000 * 60;
+    if (delta > 100) delta = 1;
+    deltaTimestamp = ms;
     movePlayer();
     updateCollision();
     rotatePlayer();
