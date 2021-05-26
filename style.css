@@ -1,0 +1,28 @@
+body {
+    background-color: #383B56;
+    overflow: hidden;
+}
+
+player {
+    background-color: #F4F3EA;
+    border-radius: 4px;
+}
+
+/* block {
+} */
+
+.color1 {
+    background-color: #369DC4;
+}
+
+.color2 {
+    background-color: #A33F48;
+}
+
+.color3 {
+    background-color: #F58C41;
+}
+
+.gameComponent {
+    position: absolute;
+}
