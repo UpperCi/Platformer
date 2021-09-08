@@ -8,7 +8,7 @@ player {
     border-radius: 4px;
 }
 
-player img {
+img {
     width: 50px;
     transform: translate(0, -15px);
 }
