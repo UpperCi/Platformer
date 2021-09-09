@@ -4,6 +4,7 @@ const maxSpeed = 15;
 const acc = 2;
 const dec = 10;
 const playerJump = 29;
+const coyoteTime = 0.1;
 
 const level = [
     "10000000000000002002",
@@ -24,6 +25,7 @@ let playerW = 50;
 let playerH = 50;
 let speedX = 0;
 let speedY = 0;
+let coyoteTimer = 0;
 
 let pressed = [];
 let justPressed = [];
@@ -115,7 +117,12 @@ function movePlayer() {
         speedX += acc;
     } else speedX *= (1 - 0.01 * dec);
 
-    if (justPressed.indexOf(32) >= 0 && speedY === 0) {
+    if (speedY === 0) {
+        coyoteTimer = coyoteTime;
+    } else {
+        coyoteTimer -= delta;
+    }
+    if (justPressed.indexOf(32) >= 0 && coyoteTimer > 0) {
         speedY = -playerJump;
     }
 
