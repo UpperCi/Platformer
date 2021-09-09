@@ -124,7 +124,7 @@ function movePlayer() {
     }
     if (justPressed.indexOf(32) >= 0 && coyoteTimer > 0) {
         speedY = -playerJump;
-        coyoteTime = 0;
+        coyoteTimer = 0;
     }
 
     speedY += 1.5;
