@@ -4,7 +4,7 @@ const maxSpeed = 15;
 const acc = 2;
 const dec = 10;
 const playerJump = 29;
-const coyoteTime = 0.1;
+const coyoteTime = 20;
 
 const level = [
     "10000000000000002002",
