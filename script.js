@@ -163,7 +163,7 @@ function rotatePlayer() {
 function stretchPlayer() {
     let stretch = Math.abs(1 + speedY / 10);
     console.log( `${baseH * stretch}px`)
-    playerImg.style.height = `${baseH * stretch}px`;
+    playerImg.style.height = `${Math.round(baseH * stretch)}px`;
 }
 
 function flipPlayer() {
