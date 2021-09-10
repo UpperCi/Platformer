@@ -1,5 +1,4 @@
 const player = document.querySelector('player');
-const playerImg = player.firstChild;
 const game = document.querySelector('game');
 const maxSpeed = 15;
 const acc = 2;
@@ -163,8 +162,8 @@ function rotatePlayer() {
 function stretchPlayer() {
     let stretch = Math.abs(1 + speedY / 10);
     console.log( `${Math.round(baseH * stretch)}px`)
-    console.log(playerImg)
-    playerImg.style.height = `${Math.round(baseH * stretch)}px`;
+    console.log(player.firstChild)
+    player.firstChild.style.height = `${Math.round(baseH * stretch)}px`;
 }
 
 function flipPlayer() {
