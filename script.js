@@ -162,13 +162,14 @@ function rotatePlayer() {
 
 function stretchPlayer() {
     let stretch = 1 + Math.abs(speedY / 10);
-    console.log( `${Math.round(baseH * stretch)}px`)
-    console.log(player.firstChild)
     playerImg.style.height = `${Math.round(baseH * stretch)}px`;
 }
 
 function flipPlayer() {
-    playerImg.style.transform = `scaleX(${Math.sign(speedX)})`;
+    if (speedX != 0) {
+        playerImg.style.transform = `scaleX(${Math.sign(speedX)})`;
+
+    }
 }
 
 function update(ms) {
