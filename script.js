@@ -165,6 +165,10 @@ function stretchPlayer() {
     playerImg.style.height = `${baseH * stretch}px`;
 }
 
+function flipPlayer() {
+    playerImg.style.transform = `translateX(${Math.sign(speedX)})`;
+}
+
 function update(ms) {
     delta = (ms - deltaTimestamp) / 1000 * 60;
     if (delta > 10) delta = 1; // prevent clipping
@@ -173,6 +177,7 @@ function update(ms) {
     updateCollision();
     rotatePlayer();
     stretchPlayer();
+    flipPlayer();
     setPos(player, playerX, playerY);
     justPressed = [];
 
