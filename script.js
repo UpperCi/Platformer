@@ -161,14 +161,14 @@ function rotatePlayer() {
 }
 
 function stretchPlayer() {
-    let stretch = Math.abs(1 + speedY / 10);
+    let stretch = 1 + Math.abs(speedY / 10);
     console.log( `${Math.round(baseH * stretch)}px`)
     console.log(player.firstChild)
     playerImg.style.height = `${Math.round(baseH * stretch)}px`;
 }
 
 function flipPlayer() {
-    playerImg.style.transform = `translateX(${Math.sign(speedX)})`;
+    playerImg.style.transform = `scaleX(${Math.sign(speedX)})`;
 }
 
 function update(ms) {
