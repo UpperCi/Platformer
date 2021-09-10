@@ -1,4 +1,5 @@
 const player = document.querySelector('player');
+const playerImg = player.firstChild;
 const game = document.querySelector('game');
 const maxSpeed = 15;
 const acc = 2;
@@ -6,6 +7,8 @@ const dec = 10;
 const playerJump = 29;
 const coyoteTime = 4;
 const jumpBuffer = 5;
+const baseW = 50;
+const baseH = 70;
 
 const level = [
     "10000000000000002002",
@@ -113,21 +116,21 @@ function createBlock(x, y, w, h, col = 1) {
 }
 
 function movePlayer() {
-    if (pressed.indexOf(37) >= 0) {
+    if (pressed.indexOf(37) >= 0) { // horizontal speed
         speedX -= acc;
     } else if (pressed.indexOf(39) >= 0) {
         speedX += acc;
     } else speedX *= (1 - 0.01 * dec);
 
-    if (speedY === 0) {
+    if (speedY === 0) { // update coyote time
         coyoteTimer = coyoteTime;
     } else if (coyoteTimer >= 0) {
         coyoteTimer -= delta;
     }
-    if (justPressed.indexOf(32) >= 0) {
+
+    if (justPressed.indexOf(32) >= 0) { // update jump buffer
         jumpBufferTimer = jumpBuffer;
-    }
-    if (jumpBufferTimer >= 0) {
+    } else if (jumpBufferTimer >= 0) {
         jumpBufferTimer -= delta;
     }
     if (jumpBufferTimer > 0 && coyoteTimer > 0) {
@@ -157,13 +160,19 @@ function rotatePlayer() {
     player.style.transform = `rotate(${playerAngle}deg)`;
 }
 
+function stretchPlayer() {
+    let stretch = Math.abs(1 + speedY / 10);
+    playerImg.height = baseH * stretch;
+}
+
 function update(ms) {
     delta = (ms - deltaTimestamp) / 1000 * 60;
-    if (delta > 100) delta = 1;
+    if (delta > 10) delta = 1; // prevent clipping
     deltaTimestamp = ms;
     movePlayer();
     updateCollision();
     rotatePlayer();
+    stretchPlayer();
     setPos(player, playerX, playerY);
     justPressed = [];
 
