@@ -180,7 +180,7 @@ function update(ms) {
     rotatePlayer();
     stretchPlayer();
     flipPlayer();
-    setPos(player, playerX, playerY);
+    setPos(player, playerX, playerY - 15);
     justPressed = [];
 
     requestAnimationFrame(update);
