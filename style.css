@@ -6,11 +6,11 @@ body {
 player {
     background-color: #F4F3EA;
     border-radius: 4px;
+    transform: translate(0, -15px);
 }
 
 img {
     width: 50px;
-    transform: translate(0, -15px);
 }
 
 /* block {
