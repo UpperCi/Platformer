@@ -163,7 +163,7 @@ function stretchPlayer() {
     let stretch = Math.abs(1 + speedY / 10);
     console.log( `${Math.round(baseH * stretch)}px`)
     console.log(player.firstChild)
-    player.firstChild.style.height = `${Math.round(baseH * stretch)}px`;
+    player.childNodes[0].style.height = `${Math.round(baseH * stretch)}px`;
 }
 
 function flipPlayer() {
